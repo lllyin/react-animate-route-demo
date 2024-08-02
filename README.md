@@ -1,5 +1,5 @@
 # 动画演示
-[![Watch the video](./docs/cover.png)](./docs/animate.mov)
+[![Watch the video](./docs/cover.png)](./docs/animate.mp4)
 
 
 
