@@ -1,0 +1,214 @@
+.App {
+  text-align: center;
+}
+
+.App > div {
+  overflow: hidden;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/**
+ *  页面转场动画 需要导入到 global.less 中
+ */
+
+$duration: 360ms;
+$exitDistance: 30%;
+// $fn: cubic-bezier(0.165, 0.84, 0.44, 1);
+// 动画开始时较快，然后减速。
+$fn: cubic-bezier(0, 0, 0.58, 1);
+// 动画开始和结束时慢，中间加速。
+$fn: cubic-bezier(0.42, 0, 0.58, 1);
+$enterTimingFn: $fn;
+$exitTimingFn: $fn;
+
+.main {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background: white;
+}
+
+.forward {
+  .forward-enter {
+    @extend .main;
+    transform: translateX(100%);
+  }
+
+  .forward-enter-active {
+    @extend .main;
+    opacity: 1;
+    transform: translateX(0);
+    transition: all $duration $enterTimingFn;
+    z-index: 2;
+  }
+
+  .forward-exit {
+    @extend .main;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .forward-exit-active {
+    @extend .main;
+    opacity: 1;
+    transform: translateX(-$exitDistance);
+    transition: all $duration $exitTimingFn;
+  }
+
+  .back-enter {
+    @extend .main;
+    opacity: 1;
+    transform: translateX($exitDistance);
+  }
+
+  .back-enter-active {
+    @extend .main;
+    opacity: 1;
+    transform: translateX(0);
+    transition: all $duration $enterTimingFn;
+    z-index: 2;
+  }
+
+  .back-exit {
+    @extend .main;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .back-exit-active {
+    @extend .main;
+    opacity: 1;
+    transform: translate(-$exitDistance);
+    transition: all $duration $exitTimingFn;
+  }
+}
+
+.back {
+  .forward-exit {
+    @extend .main;
+    opacity: 1;
+    transform: translateX(0%);
+  }
+
+  .forward-exit-active {
+    @extend .main;
+    opacity: 1;
+    transform: translateX(100%);
+    transition: all $duration $exitTimingFn;
+    z-index: 2;
+  }
+
+  .back-enter {
+    @extend .main;
+    opacity: 1;
+    transform: translateX(-$exitDistance);
+  }
+
+  .back-enter-active {
+    @extend .main;
+    opacity: 1;
+    transform: translateX(0);
+    transition: all $duration $enterTimingFn;
+    z-index: 2;
+  }
+
+  .back-exit {
+    @extend .main;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .back-exit-active {
+    @extend .main;
+    opacity: 1;
+    transform: translate(100%);
+    transition: all $duration $exitTimingFn;
+    z-index: 3;
+  }
+}
+
+// 侧滑返回
+.swipe-back {
+  .forward-exit {
+    @extend .main;
+    display: none;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .forward-exit-active {
+    @extend .main;
+    display: none;
+    opacity: 1;
+    transform: translateX(0);
+    transition: none;
+    z-index: 2;
+  }
+
+  .swipe-back-enter {
+    @extend .main;
+    display: none;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .swipe-back-enter-active {
+    @extend .main;
+    display: none;
+    opacity: 1;
+    transform: translateX(0);
+    transition: none;
+    z-index: 2;
+  }
+
+  .swipe-back-exit {
+    @extend .main;
+    display: none;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .swipe-back-exit-active {
+    @extend .main;
+    display: none;
+    opacity: 1;
+    transform: translate(0);
+    transition: none;
+    z-index: 3;
+  }
+}
