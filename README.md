@@ -1,3 +1,8 @@
+# 动画演示
+[![Watch the video](./docs/cover.png)](./docs/animate.mov)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
