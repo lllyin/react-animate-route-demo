@@ -1,7 +1,5 @@
 # 动画演示
-[![Watch the video](./docs/cover.png)](./docs/animate.mp4)
-
-
+https://github.com/user-attachments/assets/29d8a7b5-53bf-4a0f-8b1a-a9c0fcc8d43e
 
 # Getting Started with Create React App
 
